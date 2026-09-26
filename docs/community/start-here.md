@@ -8,7 +8,7 @@ Un assistant peut avoir un nom sans être celui qu'il prétend être. Il peut ê
 
 Proposez une situation dans laquelle cette distinction serait utile : un assistant familial, un robot partagé, une association, une API, un objet connecté. Décrivez avec des personnages inventés : qui agit, pour qui, quelles informations doivent rester privées, ce qui est permis et comment arrêter l'action.
 
-Vous pouvez aussi corriger une explication, proposer une traduction ou dire ce qui vous inquiète. Le [formulaire de scénario](../../../issues/new?template=scenario.yml) est un point d'entrée ; aucun vocabulaire technique n'est nécessaire. La contribution sera publique et liée à votre compte GitHub, pas anonyme.
+Vous pouvez aussi corriger une explication, proposer une traduction ou dire ce qui vous inquiète. Le [formulaire de scénario](https://github.com/shukra-ai/ai-id/issues/new?template=scenario.yml) est un point d'entrée ; aucun vocabulaire technique n'est nécessaire. La contribution sera publique et liée à votre compte GitHub, pas anonyme.
 
 ## Puis-je m'inscrire à AI ID ?
 
