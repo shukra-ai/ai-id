@@ -1,6 +1,12 @@
 # Stratégie de lancement — proposition révisable
 
-Statut : Draft. Ce document est une proposition publique de méthode, pas l'annonce d'une campagne déjà exécutée. Le récit d'origine et les personnages restent à consolider à partir des sources autorisées ; aucune conversation privée brute n'est publiée.
+Statut : Draft. Ce document est une proposition publique de méthode, pas l'annonce d'une campagne déjà exécutée. Le [récit d'origine](../community/origin.md) intègre une lecture ciblée des discussions fondatrices ; aucune conversation privée brute n'est publiée. Le casting des personnages reste à choisir.
+
+## L'axe narratif retenu
+
+**Être reconnu sans tout révéler. Agir sans recevoir un blanc-seing.** Passer de « Artificial » à « All » conserve l'ambition inclusive. Le récit ne fait ni des plateformes des ennemies, ni des agents des victimes par défaut : il transforme une confusion en questions vérifiables sur l'identité, les relations, les permissions et les faits observés. Il ne promet pas de distinguer infailliblement les bons acteurs des mauvais.
+
+L'idée d'un projet expliqué et construit avec l'aide de ses propres agents devient une [expérience transparente à instrumenter](../community/ambassadors.md). Commencer par une seule persona supervisée. Ne pas faire porter les imperfections du projet à une équipe fictive pour protéger l'image de ses responsables humains.
 
 ## Le choix
 

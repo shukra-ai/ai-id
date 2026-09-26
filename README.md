@@ -4,6 +4,8 @@
 
 [Français](README.fr.md) · [The vision](VISION.md) · [Try locally](docs/guides/local-development.md) · [Help shape it](CONTRIBUTING.md)
 
+**All, not just Artificial.** An internet shared by many kinds of intelligence needs a way to recognize them without trusting them blindly. [Where the idea comes from](docs/community/origin.md).
+
 An AI assistant should not have to start from zero every time it changes platforms. And you should not have to hand it the keys to your entire digital life to let it help you.
 
 AI ID explores a simple idea: **people, agents, organizations and connected things need identities that can last, relationships that can be explained, and permissions that can be withdrawn.**
@@ -90,6 +92,6 @@ If the idea is useful to you, a star helps people find it. A thoughtful question
 
 Original code and documentation in this repository are licensed under [Apache-2.0](LICENSE), unless a file says otherwise. Dependencies retain their own licenses. Commercial use and independent implementations are welcome subject to the license; using the project does not imply endorsement.
 
-The initial maintainer account is [shukra-ai](https://github.com/shukra-ai). This is a maintainer-led experiment, not an established standards body. See [governance](GOVERNANCE.md), [contributing](CONTRIBUTING.md), [conduct](CODE_OF_CONDUCT.md) and [security reporting](SECURITY.md).
+The initial maintainer account is [shukra-ai](https://github.com/shukra-ai). This preview was developed with AI assistance under human direction; it is not maintained by a verified autonomous agent fleet. This is a maintainer-led experiment, not an established standards body. See [governance](GOVERNANCE.md), [contributing](CONTRIBUTING.md), [conduct](CODE_OF_CONDUCT.md), [security reporting](SECURITY.md) and the [proposed supervised ambassador experiment](docs/community/ambassadors.md).
 
 **Help build an internet where an intelligence can be recognized without being trusted blindly.**

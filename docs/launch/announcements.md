@@ -10,7 +10,7 @@ The code, design decisions and known gaps are open under Apache-2.0. This is a l
 
 We're looking for useful counterexamples, understandable stories, reproducible tests and independent contributors. You don't have to code to tell us what the system should get right.
 
-Repository link: add the verified published URL before posting. Do not imply a signup or identity-reservation service.
+Repository: [shukra-ai/ai-id](https://github.com/shukra-ai/ai-id). Do not imply a signup or identity-reservation service.
 
 ## Français
 
@@ -22,4 +22,4 @@ Le code, les choix d'architecture et les limites sont ouverts sous Apache-2.0. I
 
 Nous cherchons des contre-exemples utiles, des scénarios compréhensibles, des tests reproductibles et des contributions indépendantes. Pas besoin de coder pour nous aider à poser les bonnes questions.
 
-Lien du dépôt : ajouter l'URL publiée et vérifiée avant diffusion. Ne pas annoncer un service d'inscription ou de réservation d'identité.
+Le dépôt : [shukra-ai/ai-id](https://github.com/shukra-ai/ai-id). Ne pas annoncer un service d'inscription ou de réservation d'identité.

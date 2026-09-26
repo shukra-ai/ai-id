@@ -15,8 +15,14 @@ Une copie neuve des fichiers autorisés a été créée sous un répertoire de p
 
 L'installation signale le script `postinstall` d'esbuild comme non encore couvert par la politique `allowScripts` de npm. Les vérifications ont néanmoins réussi ; aucune autorisation globale de scripts n'a été ajoutée.
 
-## Limites
+## Vérification distante du premier commit publié
 
-La CI Linux/Chromium nouvellement préparée doit être évaluée sur son exécution réelle dans GitHub. Ce rapport ne lui attribue pas un résultat par anticipation. Les tests utilisent PGlite, pas PostgreSQL natif en concurrence multi-processus. L'avertissement d'adaptateur OIDC en mémoire concerne le fournisseur amont de test ; l'authentification AI ID utilise son adaptateur persistant.
+Le commit `b0d85751f2589d39ffbea9a1b1f87d3e3955acde` a été publié sur `shukra-ai/ai-id`. Le workflow **Local preview checks** s'est terminé avec la conclusion **success** : [exécution GitHub Actions](https://github.com/shukra-ai/ai-id/actions/runs/36228082342). Il exécute l'installation, le contrôle TypeScript, les tests et le contrôle de publication sous Linux/Chromium. Ce résultat concerne ce commit précis, pas automatiquement les suivants.
+
+Le signalement privé de vulnérabilités, le graphe de dépendances et les alertes Dependabot ont été activés. La détection de secrets et la protection des pushes étaient déjà actives. Les paramètres d'authentification du compte et les règles de branches n'ont pas été modifiés.
+
+## Limites de la preuve
+
+Chaque nouvelle révision doit être évaluée sur son exécution réelle dans GitHub. Les tests utilisent PGlite, pas PostgreSQL natif en concurrence multi-processus. L'avertissement d'adaptateur OIDC en mémoire concerne le fournisseur amont de test ; l'authentification AI ID utilise son adaptateur persistant.
 
 La recherche de motifs et la revue du manifeste réduisent les risques de fuite ; elles ne prouvent ni l'absence absolue de secrets, ni la sécurité de l'application. Les versions et résultats d'audit sont datés, pas des garanties futures.

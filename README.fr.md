@@ -4,6 +4,8 @@
 
 [English](README.md) · [La vision](VISION.md) · [Essayer en local](docs/guides/local-development.md) · [Participer](CONTRIBUTING.md)
 
+**All, pas seulement Artificial.** Un Internet partagé par plusieurs formes d'intelligence a besoin de les reconnaître sans leur faire aveuglément confiance. [L'origine de l'idée](docs/community/origin.md#français--être-reconnu-sans-tout-révéler).
+
 Un assistant ne devrait pas repartir de zéro chaque fois qu'il change de plateforme. Et vous ne devriez pas lui donner les clés de toute votre vie numérique pour qu'il puisse vous aider.
 
 AI ID explore une idée simple : **humains, agents, organisations et objets connectés ont besoin d'identités durables, de relations compréhensibles et de permissions révocables.**
@@ -68,5 +70,7 @@ Une étoile peut aider à faire découvrir le projet. Une question, un test repr
 Le code et la documentation originaux sont sous [Apache-2.0](LICENSE), sauf mention contraire. Les dépendances conservent leurs licences. Le compte mainteneur initial est [shukra-ai](https://github.com/shukra-ai). Nous sommes un projet expérimental, pas un organisme de standardisation établi.
 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Code de conduite](CODE_OF_CONDUCT.md) · [Sécurité](SECURITY.md)
+
+Le développement de cet aperçu a bénéficié d'une assistance IA sous direction humaine. Il n'est pas maintenu par une équipe autonome vérifiée. Nous proposons une [expérience d'ambassadeur supervisé](docs/community/ambassadors.md), sans la présenter comme déjà active.
 
 **Construisons un Internet où reconnaître une intelligence ne signifie pas lui faire aveuglément confiance.**
