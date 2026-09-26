@@ -1,0 +1,30 @@
+name: Reproducible bug / Bug reproductible
+description: A non-sensitive bug in the local preview. For vulnerabilities, see SECURITY.md.
+title: '[Bug] '
+body:
+  - type: markdown
+    attributes:
+      value: Do not post vulnerabilities, keys, .local files, identity documents or real incident data here. Use the private reporting route in SECURITY.md.
+  - type: input
+    id: revision
+    attributes:
+      label: Revision, Node version, OS and browser
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps with synthetic data
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Checks performed and sanitized error message
+      description: Review logs yourself before sharing. Do not upload entire logs or screenshots containing secrets.

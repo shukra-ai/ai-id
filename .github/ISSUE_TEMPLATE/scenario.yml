@@ -1,0 +1,26 @@
+name: A situation AI ID should understand / Un scénario
+description: No coding required. Describe a need with fictional people and data.
+title: '[Scenario] '
+body:
+  - type: markdown
+    attributes:
+      value: This issue is public and linked to your GitHub account. Use fictional data only. Français et anglais bienvenus. This is not a beta signup form.
+  - type: textarea
+    id: story
+    attributes:
+      label: What happens? / Que se passe-t-il ?
+      description: Who acts, for whom, and what are they trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: What should be allowed, refused or kept private?
+      description: Explain the boundaries in your own words.
+    validations:
+      required: true
+  - type: textarea
+    id: stop
+    attributes:
+      label: What would make you stop trusting this interaction?
+      description: A mistake, a missing explanation, or a permission that cannot be withdrawn?

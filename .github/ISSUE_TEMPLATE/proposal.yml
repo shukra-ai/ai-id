@@ -1,0 +1,24 @@
+name: Improvement / Proposition
+description: Improve the explanation, experience, specification or implementation.
+title: '[Proposal] '
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem, in plain language
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change and alternatives
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How could we test whether it helps?
+  - type: textarea
+    id: risks
+    attributes:
+      label: Privacy, security or exclusion risks

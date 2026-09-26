@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSP is delivered as a response header, including frame-ancestors. -->
+    <meta name="referrer" content="no-referrer" />
+    <meta name="color-scheme" content="light" />
+    <title>AI ID — Console développeur</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
+
+    <div id="boot-screen" class="boot-screen" role="status" aria-live="polite">
+      <div class="brand-mark" aria-hidden="true"><span>AI</span></div>
+      <p>Connexion à votre domaine de confiance…</p>
+    </div>
+
+    <main id="login-screen" class="login-screen" hidden>
+      <section class="login-panel" aria-labelledby="login-title">
+        <div class="login-brand">
+          <div class="brand-mark brand-mark-large" aria-hidden="true"><span>AI</span></div>
+          <div>
+            <p class="eyebrow">All Intelligences ID</p>
+            <p class="login-wordmark">Infrastructure de confiance</p>
+          </div>
+        </div>
+        <div class="login-copy">
+          <p class="eyebrow">Console développeur</p>
+          <h1 id="login-title">Identifiez chaque acteur.<br />Vérifiez chaque décision.</h1>
+          <p>
+            Gérez les identités humaines et agentiques, leurs délégations et leurs
+            preuves depuis un même domaine de confiance.
+          </p>
+        </div>
+        <div class="login-actions">
+          <a id="login-link" class="button button-primary button-large" href="/auth/login">
+            Se connecter
+          </a>
+          <a id="register-link" class="button button-quiet button-large" href="/register">
+            Créer un domaine
+          </a>
+        </div>
+        <p id="login-error" class="form-message form-message-error" hidden></p>
+        <p class="login-assurance">
+          Passkeys · Délégations bornées · Audit vérifiable
+        </p>
+      </section>
+      <aside class="login-visual" aria-label="Principes de la plateforme">
+        <div class="trust-graphic" aria-hidden="true">
+          <span class="trust-node trust-node-main">ID</span>
+          <span class="trust-node trust-node-one">01</span>
+          <span class="trust-node trust-node-two">02</span>
+          <span class="trust-node trust-node-three">03</span>
+          <span class="trust-line trust-line-one"></span>
+          <span class="trust-line trust-line-two"></span>
+          <span class="trust-line trust-line-three"></span>
+        </div>
+        <blockquote>
+          « La confiance n’est pas un score universel. C’est une décision explicable,
+          ancrée dans un contexte et des preuves. »
+        </blockquote>
+      </aside>
+    </main>
+
+    <div id="app-shell" class="app-shell" hidden>
+      <aside class="sidebar" aria-label="Navigation principale">
+        <div class="sidebar-brand">
+          <div class="brand-mark" aria-hidden="true"><span>AI</span></div>
+          <div>
+            <strong>AI ID</strong>
+            <span>Trust infrastructure</span>
+          </div>
+        </div>
+
+        <nav class="main-nav">
+          <a id="passkey-link" class="nav-item" href="/auth/login">Enregistrer une passkey</a>
+          <p class="nav-label">Espace de travail</p>
+          <button class="nav-item is-active" type="button" data-view="overview" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">⌂</span><span>Vue d’ensemble</span>
+          </button>
+          <button class="nav-item" type="button" data-view="identities">
+            <span class="nav-icon" aria-hidden="true">◇</span><span>Identités</span>
+          </button>
+          <button class="nav-item" type="button" data-view="access">
+            <span class="nav-icon" aria-hidden="true">⌁</span><span>Accès & délégations</span>
+          </button>
+          <button class="nav-item" type="button" data-view="trust">
+            <span class="nav-icon" aria-hidden="true">◎</span><span>Preuves & réputation</span>
+          </button>
+          <button class="nav-item" type="button" data-view="activity">
+            <span class="nav-icon" aria-hidden="true">≋</span><span>Événements & audit</span>
+          </button>
+          <p class="nav-label nav-label-secondary">Ressources</p>
+          <button class="nav-item" type="button" data-view="docs">
+            <span class="nav-icon" aria-hidden="true">⌘</span><span>API & SDK</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="domain-card">
+            <span class="status-dot" aria-hidden="true"></span>
+            <div>
+              <span>Domaine actif</span>
+              <strong id="sidebar-domain">—</strong>
+            </div>
+          </div>
+          <button id="logout-button" class="logout-button" type="button">Se déconnecter</button>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <button id="mobile-nav-toggle" class="icon-button mobile-nav-toggle" type="button" aria-label="Ouvrir la navigation" aria-expanded="false">
+            <span aria-hidden="true">☰</span>
+          </button>
+          <div class="topbar-context">
+            <span class="environment-badge">Pilote local · données fictives</span>
+            <span id="scope-summary" class="scope-summary"></span>
+          </div>
+          <div class="user-menu" aria-label="Session active">
+            <span id="user-avatar" class="user-avatar" aria-hidden="true">—</span>
+            <div>
+              <strong id="user-name">—</strong>
+              <span id="user-principal">—</span>
+            </div>
+          </div>
+        </header>
+
+        <main id="main-content" class="content" tabindex="-1">
+          <section id="view-overview" class="view is-active" data-view-panel="overview" aria-labelledby="overview-title">
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">Domaine de confiance</p>
+                <h1 id="overview-title">Vue d’ensemble</h1>
+                <p id="overview-welcome" class="page-subtitle"></p>
+                <p class="domain-reference">Identifiant du domaine : <code id="domain-id"></code></p>
+              </div>
+              <button class="button button-primary" type="button" data-open-view="identities">Créer une identité</button>
+            </div>
+
+            <div id="overview-metrics" class="metric-grid" aria-live="polite"></div>
+
+            <div class="overview-grid">
+              <section class="card" aria-labelledby="recent-identities-title">
+                <div class="card-header">
+                  <div>
+                    <p class="card-kicker">Répertoire</p>
+                    <h2 id="recent-identities-title">Identités récentes</h2>
+                  </div>
+                  <button class="text-button" type="button" data-open-view="identities">Tout afficher</button>
+                </div>
+                <div id="overview-entities" class="list-region"></div>
+              </section>
+
+              <section class="card" aria-labelledby="recent-events-title">
+                <div class="card-header">
+                  <div>
+                    <p class="card-kicker">Flux de confiance</p>
+                    <h2 id="recent-events-title">Activité récente</h2>
+                  </div>
+                  <button class="text-button" type="button" data-open-view="activity">Ouvrir le journal</button>
+                </div>
+                <div id="overview-events" class="list-region"></div>
+              </section>
+            </div>
+
+            <section class="assurance-strip" aria-label="État du domaine">
+              <div>
+                <span class="assurance-icon" aria-hidden="true">✓</span>
+                <div><strong>Décisions explicables</strong><span>Chaque autorisation retourne une raison traçable.</span></div>
+              </div>
+              <div>
+                <span class="assurance-icon" aria-hidden="true">✓</span>
+                <div><strong>Délégations bornées</strong><span>Ressource, action et durée restent explicites.</span></div>
+              </div>
+              <div>
+                <span class="assurance-icon" aria-hidden="true">✓</span>
+                <div><strong>Audit vérifiable</strong><span>Le chaînage permet de détecter toute altération.</span></div>
+              </div>
+            </section>
+          </section>
+
+          <section id="view-identities" class="view" data-view-panel="identities" aria-labelledby="identities-title" hidden>
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">Entity Directory</p>
+                <h1 id="identities-title">Identités</h1>
+                <p class="page-subtitle">Créez des entités persistantes et associez leurs principaux d’exécution.</p>
+              </div>
+              <button id="toggle-entity-form" class="button button-primary" type="button" aria-expanded="false" aria-controls="entity-create-card">Nouvelle identité</button>
+            </div>
+
+            <section id="entity-create-card" class="card form-card" hidden aria-labelledby="entity-create-title">
+              <div class="card-header">
+                <div><p class="card-kicker">Nouvelle ressource</p><h2 id="entity-create-title">Créer une identité</h2></div>
+              </div>
+              <form id="entity-form" class="inline-form">
+                <label>Type d’entité
+                  <select name="kind" required>
+                    <option value="human">Humain</option>
+                    <option value="agent">Agent IA</option>
+                    <option value="service">Service</option>
+                    <option value="organization">Organisation</option>
+                  </select>
+                </label>
+                <label class="field-grow">Nom d’affichage
+                  <input name="display_name" type="text" maxlength="120" autocomplete="off" required placeholder="Nom visible dans ce domaine" />
+                </label>
+                <button class="button button-primary form-submit" type="submit">Créer</button>
+              </form>
+              <p id="entity-form-message" class="form-message" role="status"></p>
+            </section>
+
+            <section class="card table-card" aria-labelledby="entity-list-title">
+              <div class="card-header">
+                <div><p class="card-kicker">Registre</p><h2 id="entity-list-title">Entités du domaine</h2></div>
+                <button id="refresh-entities" class="icon-button" type="button" aria-label="Actualiser les identités">↻</button>
+              </div>
+              <div id="entity-list" class="table-region"></div>
+            </section>
+
+            <section class="card table-card" aria-labelledby="principal-list-title">
+              <div class="card-header">
+                <div><p class="card-kicker">Acteurs authentifiables</p><h2 id="principal-list-title">Principaux</h2></div>
+              </div>
+              <div id="principal-list" class="table-region"></div>
+            </section>
+          </section>
+
+          <section id="view-access" class="view" data-view-panel="access" aria-labelledby="access-title" hidden>
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">Authorization & Delegation</p>
+                <h1 id="access-title">Accès & délégations</h1>
+                <p class="page-subtitle">Accordez un droit durable ou une autorité courte, puis vérifiez la décision effective.</p>
+              </div>
+            </div>
+
+            <div class="three-column-grid">
+              <section class="card form-card" aria-labelledby="relationship-form-title">
+                <div class="card-header"><div><p class="card-kicker">Permission</p><h2 id="relationship-form-title">Autoriser l’outil de démonstration</h2></div></div>
+                <form id="relationship-form" class="stack-form">
+                  <label>Principal
+                    <select name="subject_id" data-principal-select required></select>
+                  </label>
+                  <div class="locked-resource"><span>Ressource</span><strong>tool:demo</strong></div>
+                  <div class="locked-resource"><span>Action</span><strong>execute</strong></div>
+                  <button class="button button-primary" type="submit">Accorder la permission</button>
+                </form>
+                <p id="relationship-form-message" class="form-message" role="status"></p>
+              </section>
+
+              <section class="card form-card" aria-labelledby="delegation-form-title">
+                <div class="card-header"><div><p class="card-kicker">Autorité temporaire</p><h2 id="delegation-form-title">Créer une délégation</h2></div></div>
+                <form id="delegation-form" class="stack-form">
+                  <label>Principal délégué
+                    <select name="delegate_principal_id" data-principal-select required></select>
+                  </label>
+                  <label>Durée
+                    <select name="ttl_seconds" required>
+                      <option value="300">5 minutes</option>
+                      <option value="900">15 minutes</option>
+                    </select>
+                  </label>
+                  <button class="button button-primary" type="submit">Déléguer l’exécution</button>
+                </form>
+                <p id="delegation-form-message" class="form-message" role="status"></p>
+              </section>
+
+              <section class="card form-card decision-card" aria-labelledby="decision-form-title">
+                <div class="card-header"><div><p class="card-kicker">PDP</p><h2 id="decision-form-title">Tester une décision</h2></div></div>
+                <form id="authorize-form" class="stack-form">
+                  <label>Principal
+                    <select name="principal_id" data-principal-select required></select>
+                  </label>
+                  <button class="button button-secondary" type="submit">Évaluer l’accès</button>
+                </form>
+                <div id="decision-result" class="decision-result" aria-live="polite"></div>
+              </section>
+            </div>
+
+            <div class="two-column-grid">
+              <section class="card table-card" aria-labelledby="relationships-title">
+                <div class="card-header"><div><p class="card-kicker">ReBAC</p><h2 id="relationships-title">Permissions actives</h2></div></div>
+                <div id="relationship-list" class="table-region"></div>
+              </section>
+              <section class="card table-card" aria-labelledby="delegations-title">
+                <div class="card-header"><div><p class="card-kicker">Chaînes d’autorité</p><h2 id="delegations-title">Délégations</h2></div></div>
+                <div id="delegation-list" class="table-region"></div>
+              </section>
+            </div>
+
+            <section class="card api-key-card" aria-labelledby="api-key-title">
+              <div>
+                <p class="card-kicker">Authentification machine</p>
+                <h2 id="api-key-title">Clé API à durée limitée</h2>
+                <p>Le secret n’est affiché qu’une fois et n’est jamais conservé dans le navigateur.</p>
+              </div>
+              <form id="api-key-form" class="api-key-form">
+                <label>Principal<select name="principal_id" data-principal-select required></select></label>
+                <label>Nom<input name="name" type="text" maxlength="80" required placeholder="Intégration locale" autocomplete="off" /></label>
+                <button class="button button-secondary" type="submit">Générer</button>
+              </form>
+              <div id="api-key-result" class="secret-result" aria-live="polite"></div>
+            </section>
+          </section>
+
+          <section id="view-trust" class="view" data-view-panel="trust" aria-labelledby="trust-title" hidden>
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">Evidence & Assessment</p>
+                <h1 id="trust-title">Preuves & réputation</h1>
+                <p class="page-subtitle">Ajoutez des observations attribuées et consultez une évaluation contextuelle — jamais un score universel.</p>
+              </div>
+            </div>
+
+            <div class="two-column-grid trust-grid">
+              <section class="card form-card" aria-labelledby="evidence-form-title">
+                <div class="card-header"><div><p class="card-kicker">Observation</p><h2 id="evidence-form-title">Enregistrer une preuve</h2></div></div>
+                <form id="evidence-form" class="stack-form">
+                  <label>Entité concernée<select name="subject_entity_id" data-entity-select required></select></label>
+                  <label>Résultat
+                    <select name="outcome" required>
+                      <option value="success">Succès</option>
+                      <option value="failure">Échec</option>
+                    </select>
+                  </label>
+                  <label>Référence
+                    <input name="reference" type="text" maxlength="200" required placeholder="Référence traçable de l’exécution" autocomplete="off" />
+                  </label>
+                  <div class="locked-resource"><span>Contexte</span><strong>tool.execution.v1</strong></div>
+                  <button class="button button-primary" type="submit">Ajouter la preuve</button>
+                </form>
+                <p id="evidence-form-message" class="form-message" role="status"></p>
+              </section>
+
+              <section class="card assessment-card" aria-labelledby="assessment-title">
+                <div class="card-header"><div><p class="card-kicker">Projection contextuelle</p><h2 id="assessment-title">Évaluation</h2></div></div>
+                <form id="assessment-form" class="assessment-selector">
+                  <label>Entité<select name="entity_id" data-entity-select required></select></label>
+                  <button class="button button-secondary" type="submit">Calculer</button>
+                </form>
+                <div id="assessment-result" class="assessment-result" aria-live="polite"></div>
+              </section>
+            </div>
+
+            <section class="card table-card" aria-labelledby="evidence-list-title">
+              <div class="card-header"><div><p class="card-kicker">Evidence ledger</p><h2 id="evidence-list-title">Preuves enregistrées</h2></div></div>
+              <div id="evidence-list" class="table-region"></div>
+            </section>
+          </section>
+
+          <section id="view-activity" class="view" data-view-panel="activity" aria-labelledby="activity-title" hidden>
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">Traçabilité</p>
+                <h1 id="activity-title">Événements & audit</h1>
+                <p class="page-subtitle">Distinguez le flux d’intégration du journal de sécurité vérifiable.</p>
+              </div>
+              <button id="verify-audit" class="button button-secondary" type="button">Vérifier la chaîne d’audit</button>
+            </div>
+
+            <div id="audit-verification" class="verification-banner" aria-live="polite"></div>
+
+            <div class="two-column-grid">
+              <section class="card table-card" aria-labelledby="events-title">
+                <div class="card-header"><div><p class="card-kicker">Domain events</p><h2 id="events-title">Historique des événements</h2></div></div>
+                <div id="event-list" class="table-region"></div>
+              </section>
+              <section class="card table-card" aria-labelledby="audit-title">
+                <div class="card-header"><div><p class="card-kicker">Audit ledger</p><h2 id="audit-title">Journal d’audit</h2></div></div>
+                <div id="audit-list" class="table-region"></div>
+              </section>
+            </div>
+          </section>
+
+          <section id="view-docs" class="view" data-view-panel="docs" aria-labelledby="docs-title" hidden>
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">Developer platform</p>
+                <h1 id="docs-title">API & SDK</h1>
+                <p class="page-subtitle">Des primitives standards, typées et explicites pour intégrer AI ID sans magie propriétaire.</p>
+              </div>
+            </div>
+
+            <div class="docs-layout">
+              <aside class="card docs-index" aria-label="Sommaire de l’intégration">
+                <p class="card-kicker">Démarrage rapide</p>
+                <ol>
+                  <li><span>01</span>Installer le SDK</li>
+                  <li><span>02</span>Créer un client</li>
+                  <li><span>03</span>Évaluer une permission</li>
+                </ol>
+                <div class="docs-domain">
+                  <span>Base URL</span>
+                  <code id="docs-base-url"></code>
+                </div>
+              </aside>
+
+              <div class="docs-content">
+                <section class="card code-card" aria-labelledby="install-title">
+                  <div class="card-header"><div><p class="card-kicker">01 — Installation</p><h2 id="install-title">Installer le client</h2></div><button class="copy-button" type="button" data-copy-target="install-code">Copier</button></div>
+                  <pre><code id="install-code">npm ci
+# SDK TypeScript inclus dans src/sdk — pas encore publié</code></pre>
+                </section>
+                <section class="card code-card" aria-labelledby="client-title">
+                  <div class="card-header"><div><p class="card-kicker">02 — Client</p><h2 id="client-title">Configurer l’accès</h2></div><button class="copy-button" type="button" data-copy-target="client-code">Copier</button></div>
+                  <pre><code id="client-code"></code></pre>
+                </section>
+                <section class="card code-card" aria-labelledby="authorize-code-title">
+                  <div class="card-header"><div><p class="card-kicker">03 — Autorisation</p><h2 id="authorize-code-title">Demander une décision</h2></div><button class="copy-button" type="button" data-copy-target="authorize-code">Copier</button></div>
+                  <pre><code id="authorize-code"></code></pre>
+                </section>
+                <div class="standards-row" aria-label="Standards pris en charge">
+                  <span>OAuth 2.0</span><span>OpenID Connect</span><span>WebAuthn</span><span>RFC 9457</span><span>AuthZEN</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>
