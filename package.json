@@ -20,7 +20,7 @@
     "@electric-sql/pglite": "0.5.8",
     "@fastify/cookie": "11.1.2",
     "@fastify/rate-limit": "11.2.0",
-    "@fastify/static": "10.1.4",
+    "@fastify/static": "10.1.5",
     "@simplewebauthn/browser": "14.0.0",
     "@simplewebauthn/server": "14.0.3",
     "express": "5.2.1",
